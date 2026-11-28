@@ -10,7 +10,7 @@ export default function FranchiseForm() {
     `Franchise enquiry – Upmukhiya Chai\nName: ${f.name}\nMobile: ${f.phone}\nCity: ${f.city}\nInvestment budget: ${f.budget || '-'}\nAvailable space: ${f.space || '-'}\nMessage: ${f.note || '-'}`;
   const submit = (e) => {
     e.preventDefault();
-    window.open(waLink(BRAND.phones[0].wa, text()), '_blank', 'noopener');
+    window.open(waLink(BRAND.phones[1].wa, text()), '_blank', 'noopener');
   };
   return (
     <form className="form" onSubmit={submit}>

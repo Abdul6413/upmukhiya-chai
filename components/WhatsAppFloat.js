@@ -11,7 +11,7 @@ export default function WhatsAppFloat() {
       {open && (
         <div className="wa-pop" role="dialog" aria-label="Chat on WhatsApp">
           <p>Chat with us on WhatsApp</p>
-          {BRAND.phones.map((p) => (
+          {BRAND.phones.filter((p) => p.wa).map((p) => (
             <a key={p.wa} href={waLink(p.wa, msg)} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon size={20} /> +91 {p.display}
             </a>

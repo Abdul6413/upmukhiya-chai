@@ -11,7 +11,7 @@ export const BRAND = {
   nameHi: 'उपमुखिया चाय',
   nameEn: 'Upmukhiya Chai',
   phones: [
-    { display: '86300 08745', tel: '+918630008745', wa: '918630008745' },
+    { display: '86300 08745', tel: '+918630008745', wa: null },
     { display: '72067 75364', tel: '+917206775364', wa: '917206775364' },
   ],
   email: 'upmukhiyachai@gmail.com',
