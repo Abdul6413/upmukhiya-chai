@@ -7,7 +7,7 @@ export const metadata = { title: 'Menu', description: 'Kulhad chai, masala chai,
 export default function Menu() {
   return (
     <>
-      <PageHero title="Our menu" hi="हमारा मेन्यू" text="Chai in every mood, with snacks made to go alongside." img="/images/hero/pack-garden.jpg" pos="center 55%" />
+      <PageHero title="Our menu" hi="हमारा मेन्यू" text="Chai in every mood, with snacks made to go alongside." img="/images/hero/pack-garden.jpg" pos="center 45%" alt="Upmukhiya Chai Premium CTC tea pack beside a glass of chai in a tea garden" />
       <section className="section">
         <div className="wrap">
           <div className="section-head"><h2>Chai and tea</h2></div>

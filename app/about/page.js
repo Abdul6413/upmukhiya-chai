@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
+import Launches from '@/components/Launches';
 
 export const metadata = { title: 'About us', description: 'Meet the team behind Upmukhiya Chai: our CEO, Chief Master Tea and UP Head.' };
 
 export default function About() {
   return (
     <>
-      <PageHero title="About Upmukhiya Chai" hi="हमारी कहानी" text="A Moradabad chai brand growing into a franchise family across Uttar Pradesh." img="/images/hero/signboard-kulhad.jpg" pos="center 40%" />
+      <PageHero title="About Upmukhiya Chai" hi="हमारी कहानी" text="A Moradabad chai brand growing into a franchise family across Uttar Pradesh." img="/images/hero/signboard-kulhad.jpg" pos="center 45%" alt="Upmukhiya Chai kulhad with signboard and spices" />
 
       <section className="section">
         <div className="wrap split">
@@ -37,7 +38,7 @@ export default function About() {
       <section className="section">
         <div className="wrap team-grid">
           <div className="person">
-            <div className="portrait sq"><Image src="/images/team/haider-ali.jpg" alt="Mr. Haider Ali, UP Head" fill sizes="(max-width:800px) 80vw, 30vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} /></div>
+            <div className="portrait"><Image src="/images/team/haider-ali.jpg" alt="Mr. Haider Ali, UP Head of Upmukhiya Chai" fill sizes="(max-width:800px) 80vw, 340px" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} /></div>
             <div>
               <p className="role dark">UP Head</p>
               <h3>Mr. Haider Ali</h3>
@@ -54,6 +55,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <Launches />
 
       <section className="section tint">
         <div className="wrap values">

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { BRAND, NAV } from './data';
-import { PhoneIcon, MailIcon, PinIcon } from './Icons';
+import { BRAND, NAV, SOCIAL } from './data';
+import { PhoneIcon, MailIcon, PinIcon, InstagramIcon } from './Icons';
 
 export default function Footer() {
   return (
@@ -10,9 +10,10 @@ export default function Footer() {
         <div>
           <div className="brand">
             <Image src="/logo.jpg" alt="Upmukhiya Chai logo" width={64} height={64} className="brand-logo" />
-            <span className="hi foot-hi">{BRAND.nameHi}</span>
+            <span className="hi foot-hi" lang="hi">{BRAND.nameHi}</span>
           </div>
           <p className="muted">Honest chai, served the way Uttar Pradesh likes it. Join the family and open your own Upmukhiya Chai outlet.</p>
+          <a className="foot-insta" href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon size={20} /> {SOCIAL.instagramHandle}</a>
         </div>
         <div>
           <h4>Explore</h4>

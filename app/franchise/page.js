@@ -1,29 +1,24 @@
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import FranchiseForm from '@/components/FranchiseForm';
+import Launches from '@/components/Launches';
+import { BENEFITS, STEPS, FAQ, PACKAGES, BRAND, waLink } from '@/components/data';
 
-export const metadata = { title: 'Franchise', description: 'Apply for an Upmukhiya Chai franchise in Uttar Pradesh. Branding, training and support from our team.' };
+export const metadata = {
+  title: 'Chai Franchise in Uttar Pradesh',
+  description: 'Apply for an Upmukhiya Chai franchise in Uttar Pradesh. Branding, training, tested recipes and ongoing support from our Moradabad head office.',
+  alternates: { canonical: '/franchise' },
+};
 
-const BENEFITS = [
-  ['Trusted brand', 'A recognisable name, logo and outlet look that customers remember.'],
-  ['Tested recipes', 'Our Chief Master Tea sets the blends and the method for every cup.'],
-  ['Training', 'Hands-on training for you and your staff before launch.'],
-  ['Outlet design', 'Warm, modern interiors and branded kulhads, cups and signage.'],
-  ['Simple menu', 'Chai, snacks and cold drinks that are quick to prepare and easy to manage.'],
-  ['Ongoing support', 'Our UP Head and head office stay in touch after you open.'],
-];
-const STEPS = [
-  ['Enquire', 'Send your details through the form or call us.'],
-  ['Discuss', 'We talk about your city, space and budget.'],
-  ['Agreement', 'Finalise the franchise terms with our team.'],
-  ['Set up and train', 'Design the outlet and train your staff.'],
-  ['Launch', 'Open your doors with our support on the ground.'],
-];
+const faqLd = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
 
 export default function Franchise() {
   return (
     <>
-      <PageHero title="Open an Upmukhiya Chai outlet" hi="फ्रेंचाइज़ी के लिए आवेदन करें" text="Be part of our growing chai brand." img="/images/store/interior-heritage.jpg" pos="center 60%" />
+      <PageHero title="Open an Upmukhiya Chai outlet" hi="फ्रेंचाइज़ी के लिए आवेदन करें" text="Be part of our growing chai brand." img="/images/store/interior-heritage.jpg" pos="center 60%" alt="Upmukhiya Chai heritage-style outlet interior" />
       <section className="section">
         <div className="wrap">
           <div className="section-head"><h2>Why partner with us</h2></div>
@@ -33,9 +28,28 @@ export default function Franchise() {
         </div>
       </section>
 
+      {PACKAGES.length > 0 && (
+        <section className="section" id="packages">
+          <div className="wrap">
+            <div className="section-head"><h2>Franchise packages</h2></div>
+            <div className="pkg-grid">
+              {PACKAGES.map((p) => (
+                <article key={p.name} className={`pkg ${p.featured ? 'featured' : ''}`}>
+                  <h3>{p.name}</h3>
+                  {p.note && <p className="pkg-note">{p.note}</p>}
+                  <ul className="pkg-list">{p.includes.map((i) => <li key={i}>{i}</li>)}</ul>
+                  <a className="btn btn-primary" href={waLink(BRAND.phones[0].wa, `Hello Upmukhiya Chai, I am interested in the ${p.name}.`)} target="_blank" rel="noopener noreferrer">Get package details</a>
+                </article>
+              ))}
+            </div>
+            <p className="tiny">Investment details and inclusions for each package are shared by our team on enquiry.</p>
+          </div>
+        </section>
+      )}
+
       <section className="section tint">
         <div className="wrap split">
-          <div className="poster"><Image src="/images/store/franchise-poster.jpg" alt="Upmukhiya Chai franchise opportunity" fill sizes="(max-width:800px) 95vw, 45vw" /></div>
+          <div className="poster"><Image src="/images/store/franchise-poster.jpg" alt="Upmukhiya Chai franchise opportunity poster" fill sizes="(max-width:900px) 100vw, 50vw" /></div>
           <div className="split-text">
             <h2>How it works</h2>
             <ol className="steps">
@@ -45,15 +59,27 @@ export default function Franchise() {
         </div>
       </section>
 
+      <Launches title="Our outlets are opening across the state" text="A look at recent inaugurations. Your outlet could be the next one we celebrate." />
+
       <section className="section" id="apply">
         <div className="wrap apply-grid">
           <FranchiseForm />
           <div className="apply-side">
-            <div className="ph"><Image src="/images/store/wall.jpg" alt="Upmukhiya Chai outlet wall" fill sizes="(max-width:800px) 95vw, 40vw" /></div>
+            <div className="ph"><Image src="/images/store/wall.jpg" alt="Upmukhiya Chai outlet wall" fill sizes="(max-width:900px) 100vw, 40vw" /></div>
             <p>Investment details and terms are shared by our team after your enquiry, based on your city and outlet size.</p>
           </div>
         </div>
       </section>
+
+      <section className="section tint">
+        <div className="wrap faq">
+          <h2>Franchise questions, answered</h2>
+          {FAQ.map(([q, a]) => (
+            <details key={q}><summary>{q}</summary><p>{a}</p></details>
+          ))}
+        </div>
+      </section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </>
   );
 }
